@@ -1,0 +1,135 @@
+<div class="header" style="text-align:center">
+  <h1 style="color:red">TAX Form</h1>
+</div>
+<form #f="ngForm" name="form" (ngSubmit)="addStudent()" class="row g-12">
+  <div>
+    <div class="col-12">
+      <label for="customername">Customer Name</label>&nbsp;
+      <input
+        type="text"
+        id="customername"
+        [(ngModel)]="model.customername"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="contactperson">Contact Person</label>&nbsp;
+      <input
+        type="text"
+        id="contactperson"
+        [(ngModel)]="model.contactperson"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="email">Address 1</label>&nbsp;
+      <input
+        type="text"
+        id="Address1"
+        name="address1"
+        [(ngModel)]="model.address1"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+
+    <div class="col-12">
+      <label for="Address2">Address 2</label>&nbsp;
+      <input
+        type="text"
+        id="Address2"
+        name="address2"
+        [(ngModel)]="model.address2"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="city">City </label>&nbsp;
+      <input
+        type="city"
+        id="city"
+        name="city"
+        [(ngModel)]="model.city"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="email">State </label>&nbsp;
+      <input
+        type="state"
+        id="state"
+        name="state"
+        [(ngModel)]="model.state"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="email">PAN </label>&nbsp;
+      <input
+        type="pan"
+        id="pan"
+        name="pan"
+        [(ngModel)]="model.pan"
+        [ngModelOptions]="{ standalone: true }"
+      />
+    </div>
+    <br />
+
+    <div class="col-12">
+      <label for="registeron">Register on</label>&nbsp;
+      <input
+        type="text"
+        id="registeron"
+        name="registeron"
+        [(ngModel)]="model.registeron"
+      />
+    </div>
+    <br />
+
+    <div class="col-12">
+      <label for="Type">Type</label>&nbsp;
+      <select name="Type" id="Type" [(ngModel)]="model.Type">
+        <option value="IT">2%</option>
+        <option value="CSE">5%</option>
+        <option value="ECE">7%</option>
+        <option value="EEE">8%</option>
+        <option value="EIE">9%</option>
+      </select>
+    </div>
+    <br />
+
+    <table border="1">
+      <tbody>
+        <tr *ngFor="let applicant of marksEntryList">
+          <!-- <td>{{applicant.studentId}}</td>
+    <td>{{applicant.studentName}}</td> -->
+          <td>
+            <table>
+              <th *ngFor="let testMarks of applicant.marksDistributionList">
+                {{ testMarks.courseTitle }}
+              </th>
+              <tbody>
+                <tr>
+                  <td *ngFor="let testMarks of applicant.marksDistributionList">
+                    <input type="text" [(ngModel)]="testMarks.obtainedMarks" />
+                  </td>
+                  <span
+                    >Tax amount :
+                    {{ getTotal(applicant.marksDistributionList) }}</span
+                  >
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <button class="btn btn-success">Save</button>
+  </div>
+</form>

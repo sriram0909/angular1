@@ -1,0 +1,31 @@
+<p>
+  {{ books.length }}
+  {{ model | json }}
+</p>
+<form name="form" (ngSubmit)="addBook()" novalidate>
+  <input type="text" id="title" name="title" [(ngModel)]="model.title" />
+  <input type="text" id="author" name="author" [(ngModel)]="model.author" />
+  <input type="text" id="price" name="price" [(ngModel)]="model.price" />
+  <input type="submit" #btnId class="btn btn-success" value="Save" />
+
+  <button #btnId class="btn btn-success" (click)="addBook()">Add Book</button>
+</form>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <!-- tbody -->
+  <tr *ngFor="let book of books">
+    <td>{{ book.id }}</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>{{ book.price }}</td>
+    <td><button (click)="editBook(book.id)">Edit</button></td>
+    <td><button (click)="removeBook(book.id)">Delete</button></td>
+  </tr>
+</table>
